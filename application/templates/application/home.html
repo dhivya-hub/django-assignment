@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="container">
+<h1>Student details</h1>
+<table class="table table-bordered">
+   <tbody>
+{% for students in student %}
+    <tr>
+    <td>{{ students.user.username}}</td>
+    <td>{% for teachers in students.teacher.all %}
+            {{ teachers.user.username}}
+        <br>
+        {% endfor %}
+    </td>
+       <td>
+           {% for teachers in students.teacher.all %}
+              {% for subjects in teachers.subject.all %}
+                {{subjects.subject}}
+           <br>
+              {% endfor %}
+            {% endfor %}
+       </td>
+{% endfor %}
+   </tr>
+   </tbody>
+</table>
+</body>
+</html>
